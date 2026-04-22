@@ -109,7 +109,7 @@ jobs:
                 languages: ${{ matrix.language }}
                 # TODO#8: enable extended security + quality query suites
                 # queries: ???
-                queries: security-entended,security-and-quality
+                queries: security-extended,security-and-quality
                 # RESOURCE — CodeQL query suites:
                 # https://docs.github.com/en/code-security/code-scanning/creating-an-advanced-setup-for-code-scanning/codeql-code-scanning-for-compiled-languages#codeql-query-suites
                 #
@@ -141,7 +141,7 @@ jobs:
             - name: Set up Node.js
               uses: actions/setup-node@v4
               with: 
-                node_version: 20
+                node-version: 20
 
             # TODO#11: install npm deps so Dependency-Check can resolve full tree
             #          Hint: `npm install` or `npm ci`
@@ -157,7 +157,7 @@ jobs:
                 project: 'DontEverPushThisCodeV2'
                 path: '.' # scan current directory (which should be the repo root after checkout)
                 # TODO#12: which format integrates with GitHub Security tab?
-                format: SARIF'
+                format: 'SARIF'
                 out: 'reports'
                 # TODO#13: set fail threshold — block on CVSS >= ?
                 # Hint: CVSS 7.0+ = HIGH
@@ -207,7 +207,7 @@ jobs:
               with:
                 image-ref: 'my-app:latest'
                 # TODO#17: output format for Security tab integration
-                format: 'SARIF'
+                format: 'sarif'
                 output: 'trivy-results.sarif'
                 # TODO#18: which severities should be reported? (UNKNOWN,LOW,MEDIUM,HIGH,CRITICAL)
                 severity: 'HIGH,CRITICAL'
